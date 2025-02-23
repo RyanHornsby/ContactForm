@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact form for an example website">
+    <meta name="keywords" content="Contact, Inquire, Reach out, speak, get in touch with, human, not AI">
+    <meta name="author" content="Ryan Hornsby">
+    <title>Example Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Fonts/IpanemaSecco-463W.ttf">
+    <script>
+        window.onload = function() {
+            document.getElementById("contact-form").addEventListener("submit", function(event) {    
+                event.preventDefault();
+
+                if (this.checkValidity()) {
+                    setTimeout(() => {
+                        this.submit(); // Manually submit the form
+                    }, 5000);
+
+                    const ani1 = document.getElementsByClassName("inputFields")[0];
+                    const ani2 = document.getElementsByClassName("inputFieldsGhost")[0];
+                    const ani3 = document.getElementsByClassName("envelopeAnimationTop")[0];
+                    const ani4 = document.getElementsByClassName("envelopeAnimationBottom")[0];
+        
+                    if (ani1 && ani2 && ani3 && ani4) {
+                        // Assign different animations
+                        ani1.classList.add("animateSendOff");
+                        ani1.style.pointerEvents = "none";
+                        ani2.classList.add("animateSendOffGhost");
+                        ani3.classList.add("animateEnvelopeTopMovement");
+                        ani4.classList.add("animateEnvelopeBottomMovement");
+        
+                        // Remove animation classes after animation completes
+                        ani1.addEventListener("animationend", function() { ani1.classList.remove("animateSendOff"); ani1.style.pointerEvents = "all";}, { once: true });
+                        ani2.addEventListener("animationend", function() { ani2.classList.remove("animateSendOffGhost"); }, { once: true });
+                        ani3.addEventListener("animationend", function() { ani3.classList.remove("animateEnvelopeTopMovement"); }, { once: true });
+                        ani4.addEventListener("animationend", function() { ani4.classList.remove("animateEnvelopeBottomMovement"); }, { once: true });
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <!--Header section-->
+    <header>
+        <h1>Get in contact!</h1>
+        <h3>We're always willing to help.</h3>
+    </header>
+
+    <!--Main contact form-->
+    <main>
+        <section>
+            
+        </section>
+        <form id="contact-form" action="#" method="POST">
+            <section class="ourInfo">
+                <p>
+                    <strong>Our contact information</strong>
+                    <address>
+                        <strong>Email:</strong> ghost@busters.com<br>
+                        <strong>Phone:</strong> +44792395724<br>
+                        <strong>Address:</strong> 150 Freston Road, Kensington and Chelsea, London, England (W10 6TR)
+                    </address>
+                </p>
+                <hr>
+            </section>
+            <section class="theirInfo">
+                <div class="IFs">
+                    <div class="inputFields">
+                        <label for ="name">Name: </label>
+                        <input type="text" id="name" name="name" value = "" placeholder=" Your name here" required minlength="2">
+                        <label for ="email">Email address: </label>
+                        <input type="email" id="email" name="email" value = "" placeholder=" Your email here" pattern=^\w+@\w+\.\w+$ required>
+                        <label for ="phone">Contact number: </label>
+                        <input type="phone" id="phone" name="phone" value = "" placeholder=" Your contact number here" pattern="[0-9]{11}">
+                        <label for ="reason">What are you contacting us in regards to?</label>
+                        <select id="reason" name="reason" required>
+                            <option value = "" disabled selected>Select reason:</option>
+                            <option>General Inquiry</option>
+                            <option>Payment</option>
+                            <option>Career opportunities</option>
+                            <option>Other</option>
+                        </select>
+                        <label for ="message">Message: </label>
+                        <textarea placeholder=" &quot;Wow, just wanted to reach out and say how much we love your company!&quot;" required></textarea>
+                        <label for="newsletter" id="newsletterLabel">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                            Subscribe to our newsletter
+                        </label>
+                        </div>
+                    <div class="inputFieldsGhost">
+                        <label for ="a">Name: </label>
+                        <input type="text" id="name" name="a" value = "" placeholder=" Your name here">
+                        <label for ="b">Email address: </label>
+                        <input type="text" id="b" name="b" value = "" placeholder=" Your email here">
+                        <label for ="c">Contact number: </label>
+                        <input type="phone" id="c" name="c" value = "" placeholder=" Your contact number here">
+                        <label for ="reason">What are you contacting us in regards to?</label>
+                        <select id="d" name="d">
+                            <option value = "" disabled selected>Select reason:</option>
+                            <option>General Inquiry</option>
+                            <option>Payment</option>
+                            <option>Career opportunities</option>
+                            <option>Other</option>
+                        </select>
+                        <label for ="e">Message: </label>
+                        <textarea placeholder=" &quot;Wow, just wanted to reach out and say how much we love your company!&quot;"></textarea>
+                    </div>
+                </div>
+                <div class="envelopeAnimation">
+                    <div class="envelopeAnimationTop">&nbsp;</div>
+                    <div class="envelopeAnimationBottom">&nbsp;</div>
+                </div>
+                <div class="inputButton">
+                    <button id="submitButton" type="submit">Send message</button>
+                </div>
+            </section>
+        </form>
+
+    </main>
+
+    <footer>
+        <p>&copy; Company Name 2025&trade;</p>
+    </footer>
+</body>
+</html>
